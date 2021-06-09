@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  kube-orb: circleci/kubernetes@0.11.0
+
+jobs:
+  build:
+    machine: true
+    steps:
+
+    - checkout
+
+    - run:
+        name: Update Environment Variables at Runtime
+        command: |
+          echo 'export PROJECT_NAME=$(echo $CIRCLE_PROJECT_REPONAME | sed "s/_/-/g")' >> $BASH_ENV
+          source $BASH_ENV
+    - run:
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+    - build:
+        context: global
