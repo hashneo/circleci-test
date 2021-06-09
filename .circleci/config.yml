@@ -17,7 +17,7 @@ jobs:
 
     # build the application image
     - run:
-        docker build -t $DOCKER_ORG/$PROJECT_NAME-x86_64:$CIRCLE_SHA1 -t $DOCKER_ORG/$PROJECT_NAME-x86_64:latest . -f Dockerfile.x86_64
+        docker build -t $DOCKER_ORG/$PROJECT_NAME-x86_64:$CIRCLE_SHA1 -t $DOCKER_ORG/$PROJECT_NAME-x86_64:latest . -f Dockerfile
 
     # deploy the image
     - run: |
